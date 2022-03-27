@@ -1,0 +1,95 @@
+<ng-container *ngIf="products.length != 0">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col">
+              <h4><b>Order Details</b></h4>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row border-top border-bottom" *ngFor="let item of products; let i = index">
+          <div class="row main align-items-center">
+            <div class="col-2"><img class="img-fluid" src="{{ item.image }}"></div>
+            <div class="col">
+              <div class="row text-muted">{{ item.category }}</div>
+               <div class="row">{{ item.name }}</div>
+        </div>
+        <div class="col"> <a (click)="inc()">-</a><a href="#" class="border">{{counter}}</a><a (click)="plu()">+</a> </div>
+        <div class="col">{{ item.price }} EGP<span (click)="removeItem(item)">&#10005;</span></div>
+        <div class="col"> 
+          <a class="border">${{ counter *item.price}}</a>
+        </div>
+    </div>
+  </div>
+      <div class="back-to-shop"><a routerLink="/product">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+      <div style="display: flex;">
+          <button class="btn" style="margin: 2vh; background-color: rgb(206, 75, 35); border: rgb(206, 75, 35);" (click)="emptycart()">Empty Cart</button>
+          <button class="btn" style="margin: 2vh;" routerLink="/product">Order More</button>      
+      </div>
+
+      </div>
+      <div class="col-md-4 summary">
+        <div>
+          <h5><b>Summary</b></h5>
+        </div>
+        <hr>
+        <form>
+          <p>SHIPPING</p> 
+          <select>
+          <option class="text-muted">Standard-Delivery - 15 EGP</option>
+          </select>
+        </form>
+        <button class="btn" (click)="onSubmit($products)"  routerLink="/checkout">CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="products.length == 0">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col">
+              <h4><b>Order Details</b></h4>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row " >
+          <div class="row main align-items-center">
+            <div class="col">
+               <div class="row text-muted"><h3>Your Cart is Empty</h3></div>
+        </div>
+
+    </div>
+  </div>
+      <div class="back-to-shop"><a routerLink="/product">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+      <div style="display: flex;">
+          <button class="btn" style="margin: 2vh; background-color: rgb(197, 197, 197); border: rgb(197, 197, 197);" (click)="emptycart()">Empty Cart</button>
+          <button class="btn" style="margin: 2vh;" routerLink="/product">Order More</button>      
+      </div>
+
+      </div>
+      <div class="col-md-4 summary">
+        <div>
+          <h5><b>Summary</b></h5>
+        </div>
+        <hr>
+
+        <form>
+          <p>SHIPPING</p> 
+          <select>
+          <option class="text-muted">Standard-Delivery - 15 EGP</option>
+          </select>
+        </form>
+
+        <button class="btn" routerLink="/checkout">CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
